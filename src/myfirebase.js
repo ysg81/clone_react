@@ -1,5 +1,6 @@
 import firebase from 'firebase/app'
 import 'firebase/auth';
+import 'firebase/firestore';
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -10,17 +11,10 @@ const firebaseConfig = {
 	messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
 	appId: process.env.REACT_APP_APP_ID,
 };
-// const firebaseConfig = {
-// 	apiKey: 'AIzaSyCU9XAd0uLonizg8DRe61dQooKNP7Pj4Vw',
-// 	authDomain: 'clonereact-32941.firebaseapp.com',
-// 	projectId: 'clonereact-32941',
-// 	storageBucket: 'clonereact-32941.appspot.com',
-// 	messagingSenderId: '739645264148',
-// 	appId: '1:739645264148:web:ff72809f770b4c18e23201',
-// };
 
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
 export const firebaseInstance = firebase;
 export const authService = firebase.auth();
+export const dbService = firebase.firestore();
