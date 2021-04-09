@@ -1,3 +1,4 @@
+import Tweet from 'components/Tweet';
 import { dbService } from 'myfirebase';
 import React, { useState, useEffect } from 'react'
 
@@ -57,9 +58,10 @@ function Home({ userObj }) {
       </form>
       <div>
         {tweetlist.map(onetweet => (
-          <div key={onetweet.id}>
-            <h4>{onetweet.text}</h4>
-           </div>
+           <Tweet
+            key={onetweet.id}
+            tweetObj={onetweet}
+            isOwner={onetweet.creatorId === userObj.uid}/>
         ))}
       </div>
     </div>

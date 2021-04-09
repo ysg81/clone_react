@@ -55,14 +55,14 @@ function Auth() {
       <form onSubmit={onSubmit}>
         <input 
           type="text"
-          placeholder="Email"
+          placeholder="이메일"
           required
           value={email}
           name="email"
           onChange={onChange}/>
         <input
           type="password"
-          placeholder="Password"
+          placeholder="비밀번호"
           required
           value={password}
           name="password"
