@@ -35,23 +35,30 @@ function Tweet({ tweetObj, isOwner }) {
       {
         editing ? (
           <>
-            <form onSubmit={onSubmit}>
-              <input
-                type="text"
-                placeholder="트윗 수정하기"
-                value={newTweet}
-                required
-                onChange={onChange}
-              />
-              <div>
-                <input type="submit" value="수정 완료"/>
-              </div>
-            </form>
-            <button onClick={toggleEditing}>취소</button>
+            {isOwner && 
+            <>
+              <form onSubmit={onSubmit}>
+                <input
+                  type="text"
+                  placeholder="트윗 수정하기"
+                  value={newTweet}
+                  required
+                  onChange={onChange}
+                />
+                <div>
+                  <input type="submit" value="수정 완료"/>
+                </div>
+              </form>
+              <button onClick={toggleEditing}>취소</button>
+            </>
+            }
           </>
         ) : (    
           <>
           <h4>{tweetObj.text}</h4>
+          {tweetObj.fileUrl && (
+            <img src={tweetObj.fileUrl} width="50px"/> 
+          )}
           {isOwner &&
             <>
               <button onClick={onDeleteClick}>트윗 삭제하기</button>
