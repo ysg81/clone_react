@@ -1,4 +1,4 @@
-import { dbService } from 'myfirebase'
+import { dbService, storageService } from 'myfirebase'
 import React,{ useState } from 'react'
 
 function Tweet({ tweetObj, isOwner }) {
@@ -10,6 +10,7 @@ function Tweet({ tweetObj, isOwner }) {
     const ok = window.confirm("정말 삭제하시겠습니까?")
     if(ok){
       await dbService.doc(`tweets/${tweetObj.id}`).delete();
+      await storageService.refFromURL(tweetObj.fileUrl).delete();
       //트윗 삭제
     } else {
       //트윗 삭제 취소

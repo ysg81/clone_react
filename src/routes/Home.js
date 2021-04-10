@@ -22,7 +22,7 @@ function Home({ userObj }) {
   const onSubmit = async(event) => {
     event.preventDefault();
     let fileUrl = "";
-    if(fileUrl != ""){
+    if(fileUrl !== ""){
       const fileRef = storageService.ref().child(`${userObj.uid}/${uuidv4()}`);
       const response = await fileRef.putString(file, "data_url")
       fileUrl = await response.ref.getDownloadURL()
